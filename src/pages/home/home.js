@@ -14,13 +14,13 @@ import { styles } from "../../style/styles";
 
 export default function Home() {
   const navigation = useNavigation();
-  const [nusuario, setNusuario] = useState("");
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
   async function handleLogin() {
     try {
-      const resposta = await apiLocal.post("/AuthLogIn", {
-        nusuario,
+      const resposta = await apiLocal.post("/ClientLogin", {
+        email,
         senha,
       });
       navigation.navigate("Dashboard");
@@ -30,7 +30,7 @@ export default function Home() {
       console.log(error);
     }
 
-    if (!nusuario || !senha) {
+    if (!email || !senha) {
       return alert("Campos Em Branco");
     }
   }
@@ -44,10 +44,11 @@ export default function Home() {
       <View>
         <Text>Usuario:</Text>
         <TextInput
-          value={nusuario}
+          value={email}
           style={styles.input}
-          onChangeText={(text) => setNusuario(text)}
+          onChangeText={(text) => setEmail(text)}
           placeholder="Digite O Seu Usuario"
+          keyboardType="email-address"
         />
       </View>
       <View>

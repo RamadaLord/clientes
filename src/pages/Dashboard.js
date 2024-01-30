@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Text, View, SafeAreaView } from "react-native";
-import { styles} from '../../../style'
+import { styles } from "../style/styles";
 
 export default function Dashboard() {
   
